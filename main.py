@@ -3,7 +3,7 @@ from train import *
 if __name__ == '__main__':
     # All necessary arguments are defined in args.py
     args = Args()
-    os.environ['CUDA_VISIBLE_DEVICES'] = str(args.cuda)
+    #os.environ['CUDA_VISIBLE_DEVICES'] = str(args.cuda)
     print('CUDA', args.cuda)
     print('File name prefix',args.fname)
     # check if necessary directories exist

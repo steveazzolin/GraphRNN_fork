@@ -1,8 +1,67 @@
 import networkx as nx
 import numpy as np
 
+import os
+from scipy.spatial import Delaunay
+from torch.utils.data import Dataset
+import torch.nn.functional as F
+
 from utils import *
 from data import *
+
+class PlanarDataset(Dataset):
+    def __init__(self, n_nodes, n_graphs, k, same_sample=False, SON=False, ignore_first_eigv=False):
+        filename = f'planar_{n_nodes}_{n_graphs}{"_same_sample" if same_sample else ""}.pt'
+        self.k = k
+        self.ignore_first_eigv = ignore_first_eigv
+        if os.path.isfile(filename):
+            assert False
+        else:
+            self.adjs = []
+            self.eigvals = []
+            self.eigvecs = []
+            self.n_nodes = []
+            self.max_eigval = 0
+            self.min_eigval = 0
+            self.same_sample = same_sample
+            for i in range(n_graphs):
+                # Generate planar graphs using Delauney traingulation
+                points = np.random.rand(n_nodes,2)
+                tri = Delaunay(points)
+                adj = np.zeros([n_nodes,n_nodes])
+                for t in tri.simplices:
+                    adj[t[0], t[1]] = 1
+                    adj[t[1], t[2]] = 1
+                    adj[t[2], t[0]] = 1
+                    adj[t[1], t[0]] = 1
+                    adj[t[2], t[1]] = 1
+                    adj[t[0], t[2]] = 1
+                G = nx.convert_matrix.from_numpy_matrix(adj)
+                adj = torch.from_numpy(adj).float()
+            
+                self.adjs.append(adj)
+                self.n_nodes.append(len(G.nodes()))
+            self.n_max = n_nodes
+
+        self.max_k_eigval = 0
+        for eigv in self.eigvals:
+            if eigv[self.k] > self.max_k_eigval:
+                self.max_k_eigval = eigv[self.k].item()
+
+    def __len__(self):
+        return len(self.adjs)
+
+    def __getitem__(self, idx):
+        if self.same_sample:
+            idx = self.__len__() - 1
+        graph = {}
+        graph["n_nodes"] = self.n_nodes[idx]
+        size_diff = self.n_max - graph["n_nodes"]
+        graph["adj"] = F.pad(self.adjs[idx], [0, size_diff, 0, size_diff])
+        if self.ignore_first_eigv:
+            size_diff += 1
+        graph["mask"] = F.pad(torch.ones_like(self.adjs[idx]), [0, size_diff, 0, size_diff]).long()
+        return graph
 
 def create(args):
 ### load datasets
@@ -149,6 +208,10 @@ def create(args):
         shuffle(graphs)
         graphs = graphs[0:200]
         args.max_prev_node = 15
+    elif args.graph_type == 'planar':
+        G = PlanarDataset(n_nodes=64, n_graphs=200, k=2)
+        graphs = [nx.convert_matrix.from_numpy_matrix(G[i]["adj"].numpy()) for i in range(len(G))]
+        args.max_prev_node = 30
 
     return graphs
 

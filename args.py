@@ -1,7 +1,13 @@
+import argparse
 
 ### program configuration
 class Args():
     def __init__(self):
+        parser = argparse.ArgumentParser()
+        parser.add_argument('--graph_type', type=str, help='dataset to use', default=None)
+        args = parser.parse_args()
+
+
         ### if clean tensorboard
         self.clean_tensorboard = False
         ### Which CUDA GPU device is used for training
@@ -23,9 +29,12 @@ class Args():
         # self.graph_type = 'caveman_small'
         # self.graph_type = 'caveman_small_single'
         # self.graph_type = 'community4'
-        self.graph_type = 'grid'
+        graph_type = 'grid'
         # self.graph_type = 'grid_small'
         # self.graph_type = 'ladder_small'
+
+        self.graph_type = graph_type if args.graph_type is None else args.graph_type
+        print(f"Using {self.graph_type} dataset")
 
         # self.graph_type = 'enzymes'
         # self.graph_type = 'enzymes_small'
