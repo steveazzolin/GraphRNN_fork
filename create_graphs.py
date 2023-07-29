@@ -62,6 +62,47 @@ class PlanarDataset(Dataset):
             size_diff += 1
         graph["mask"] = F.pad(torch.ones_like(self.adjs[idx]), [0, size_diff, 0, size_diff]).long()
         return graph
+    
+class SBMDataset(Dataset):
+    def __init__(self, n_graphs, k, same_sample=False, SON=False, ignore_first_eigv=False, max_comm_size=40):
+        filename = f'sbm_{n_graphs}{"_same_sample" if same_sample else ""}.pt'
+        self.k = k
+        self.ignore_first_eigv = ignore_first_eigv
+        if os.path.isfile(filename):
+            assert False
+            self.adjs, self.eigvals, self.eigvecs, self.n_nodes, self.max_eigval, self.min_eigval, self.same_sample, self.n_max = torch.load(filename)
+            print(f'Dataset {filename} loaded from file')
+        else:
+            self.adjs = []
+            self.n_nodes = []
+            self.same_sample = same_sample
+            for seed in range(n_graphs):
+                n_comunities = np.random.random_integers(2, 5)
+                comunity_sizes = np.random.random_integers(20, max_comm_size, size=n_comunities)
+                probs = np.ones([n_comunities, n_comunities]) * 0.005
+                probs[np.arange(n_comunities), np.arange(n_comunities)] = 0.3
+                G = nx.stochastic_block_model(comunity_sizes, probs, seed=seed)
+                adj = torch.from_numpy(nx.adjacency_matrix(G).toarray()).float()
+
+                self.adjs.append(adj)
+                self.n_nodes.append(len(G.nodes()))
+            self.n_max = max(self.n_nodes)
+
+    def __len__(self):
+        return len(self.adjs)
+
+    def __getitem__(self, idx):
+        if self.same_sample:
+            idx = self.__len__() - 1
+        graph = {}
+        graph["n_nodes"] = self.n_nodes[idx]
+        size_diff = self.n_max - graph["n_nodes"]
+        graph["adj"] = F.pad(self.adjs[idx], [0, size_diff, 0, size_diff])
+        if self.ignore_first_eigv:
+            size_diff += 1
+        graph["mask"] = F.pad(torch.ones_like(self.adjs[idx]), [0, size_diff, 0, size_diff]).long()
+        return graph
+
 
 def create(args):
 ### load datasets
@@ -208,11 +249,12 @@ def create(args):
         shuffle(graphs)
         graphs = graphs[0:200]
         args.max_prev_node = 15
-    elif args.graph_type == 'planar':
+    elif args.graph_type=='planar':
         G = PlanarDataset(n_nodes=64, n_graphs=200, k=2)
         graphs = [nx.convert_matrix.from_numpy_matrix(G[i]["adj"].numpy()) for i in range(len(G))]
         args.max_prev_node = 30
-
+    elif args.graph_type=='sbm':
+        G = SBMDataset(200, k=4, max_comm_size=100)
+        graphs = [nx.convert_matrix.from_numpy_matrix(G[i]["adj"].numpy()) for i in range(len(G))]
+        args.max_prev_node = 32
     return graphs
-
-

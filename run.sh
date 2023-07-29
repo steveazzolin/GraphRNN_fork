@@ -1,9 +1,9 @@
 #!/bin/bash
 #SBATCH -p long-disi
 #SBATCH --gres=gpu:1
-#SBATCH --cpus-per-task=8
+#SBATCH --cpus-per-task=16
 #SBATCH --job-name=graph_rnn
-#SBATCH -t 1:00:00
+#SBATCH -t 2-00:00
 #SBATCH --output=/home/steve.azzolin/GraphRNN_fork/sbatch_outputs/planar.txt
 #SBATCH --error=/home/steve.azzolin/GraphRNN_fork/sbatch_outputs/planar.txt
 #SBATCH --ntasks=1
