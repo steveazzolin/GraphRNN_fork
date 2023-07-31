@@ -1,11 +1,11 @@
 #!/bin/bash
 #SBATCH -p long-disi
 #SBATCH --gres=gpu:1
-#SBATCH --cpus-per-task=16
+#SBATCH --cpus-per-task=12
 #SBATCH --job-name=graph_rnn
 #SBATCH -t 2-00:00
-#SBATCH --output=/home/steve.azzolin/GraphRNN_fork/sbatch_outputs/planar.txt
-#SBATCH --error=/home/steve.azzolin/GraphRNN_fork/sbatch_outputs/planar.txt
+#SBATCH --output=/home/steve.azzolin/GraphRNN_fork/sbatch_outputs/planar_batch32.txt
+#SBATCH --error=/home/steve.azzolin/GraphRNN_fork/sbatch_outputs/planar_batch32.txt
 #SBATCH --ntasks=1
 #SBATCH -N 1
 #SBATCH --mail-user=steve.azzolin@unitn.it
@@ -20,7 +20,7 @@ eval "$(conda shell.bash hook)"
 conda activate graphrnn
 
 
-DATASET=sbm
+DATASET=grid
 BIGGER=200
 python main.py --graph_type planar
 
