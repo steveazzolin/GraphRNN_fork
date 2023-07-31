@@ -1,0 +1,80 @@
+Using planar dataset
+CUDA 1
+File name prefix GraphRNN_RNN_planar_4_128_
+graph_validate_len 64.0
+graph_test_len 64.0
+total graph num: 200, training set: 160
+max number node: 64
+max/min number edge: 182; 172
+max previous node: 30
+train and test graphs saved at:  ./graphs/GraphRNN_RNN_planar_4_128_test_0.dat
+/home/steve.azzolin/GraphRNN_fork/model.py:299: UserWarning: nn.init.xavier_uniform is now deprecated in favor of nn.init.xavier_uniform_.
+  nn.init.xavier_uniform(param,gain=nn.init.calculate_gain('sigmoid'))
+/home/steve.azzolin/GraphRNN_fork/model.py:297: UserWarning: nn.init.constant is now deprecated in favor of nn.init.constant_.
+  nn.init.constant(param, 0.25)
+/home/steve.azzolin/GraphRNN_fork/model.py:302: UserWarning: nn.init.xavier_uniform is now deprecated in favor of nn.init.xavier_uniform_.
+  m.weight.data = init.xavier_uniform(m.weight.data, gain=nn.init.calculate_gain('relu'))
+/home/steve.azzolin/anaconda3/envs/graphrnn/lib/python3.6/site-packages/torch/nn/functional.py:1806: UserWarning: nn.functional.sigmoid is deprecated. Use torch.sigmoid instead.
+  warnings.warn("nn.functional.sigmoid is deprecated. Use torch.sigmoid instead.")
+Epoch: 100/3000, train loss: 0.157748, graph type: planar, num_layer: 4, hidden: 128
+test done, graphs saved
+Epoch: 200/3000, train loss: 0.151788, graph type: planar, num_layer: 4, hidden: 128
+test done, graphs saved
+Epoch: 300/3000, train loss: 0.149752, graph type: planar, num_layer: 4, hidden: 128
+test done, graphs saved
+Epoch: 400/3000, train loss: 0.145856, graph type: planar, num_layer: 4, hidden: 128
+test done, graphs saved
+Epoch: 500/3000, train loss: 0.146416, graph type: planar, num_layer: 4, hidden: 128
+test done, graphs saved
+Epoch: 600/3000, train loss: 0.139803, graph type: planar, num_layer: 4, hidden: 128
+test done, graphs saved
+Epoch: 700/3000, train loss: 0.138144, graph type: planar, num_layer: 4, hidden: 128
+test done, graphs saved
+Epoch: 800/3000, train loss: 0.136162, graph type: planar, num_layer: 4, hidden: 128
+test done, graphs saved
+Epoch: 900/3000, train loss: 0.135527, graph type: planar, num_layer: 4, hidden: 128
+test done, graphs saved
+Epoch: 1000/3000, train loss: 0.134649, graph type: planar, num_layer: 4, hidden: 128
+test done, graphs saved
+Epoch: 1100/3000, train loss: 0.131512, graph type: planar, num_layer: 4, hidden: 128
+test done, graphs saved
+Epoch: 1200/3000, train loss: 0.130120, graph type: planar, num_layer: 4, hidden: 128
+test done, graphs saved
+Epoch: 1300/3000, train loss: 0.128967, graph type: planar, num_layer: 4, hidden: 128
+test done, graphs saved
+Epoch: 1400/3000, train loss: 0.130556, graph type: planar, num_layer: 4, hidden: 128
+test done, graphs saved
+Epoch: 1500/3000, train loss: 0.127023, graph type: planar, num_layer: 4, hidden: 128
+test done, graphs saved
+Epoch: 1600/3000, train loss: 0.128503, graph type: planar, num_layer: 4, hidden: 128
+test done, graphs saved
+Epoch: 1700/3000, train loss: 0.125226, graph type: planar, num_layer: 4, hidden: 128
+test done, graphs saved
+Epoch: 1800/3000, train loss: 0.125777, graph type: planar, num_layer: 4, hidden: 128
+test done, graphs saved
+Epoch: 1900/3000, train loss: 0.125671, graph type: planar, num_layer: 4, hidden: 128
+test done, graphs saved
+Epoch: 2000/3000, train loss: 0.122326, graph type: planar, num_layer: 4, hidden: 128
+test done, graphs saved
+Epoch: 2100/3000, train loss: 0.123106, graph type: planar, num_layer: 4, hidden: 128
+test done, graphs saved
+Epoch: 2200/3000, train loss: 0.121473, graph type: planar, num_layer: 4, hidden: 128
+test done, graphs saved
+Epoch: 2300/3000, train loss: 0.122817, graph type: planar, num_layer: 4, hidden: 128
+test done, graphs saved
+Epoch: 2400/3000, train loss: 0.118094, graph type: planar, num_layer: 4, hidden: 128
+test done, graphs saved
+Epoch: 2500/3000, train loss: 0.119206, graph type: planar, num_layer: 4, hidden: 128
+test done, graphs saved
+Epoch: 2600/3000, train loss: 0.117131, graph type: planar, num_layer: 4, hidden: 128
+test done, graphs saved
+Epoch: 2700/3000, train loss: 0.115988, graph type: planar, num_layer: 4, hidden: 128
+test done, graphs saved
+Epoch: 2800/3000, train loss: 0.116951, graph type: planar, num_layer: 4, hidden: 128
+test done, graphs saved
+Epoch: 2900/3000, train loss: 0.116960, graph type: planar, num_layer: 4, hidden: 128
+test done, graphs saved
+Epoch: 3000/3000, train loss: 0.114891, graph type: planar, num_layer: 4, hidden: 128
+test done, graphs saved
+DONE
+Execution lasted 141 minutes
