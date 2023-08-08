@@ -1,5 +1,6 @@
 import networkx as nx
 import numpy as np
+import random 
 
 import os
 from scipy.spatial import Delaunay
@@ -8,6 +9,50 @@ import torch.nn.functional as F
 
 from utils import *
 from data import *
+
+
+class GridDataset(Dataset):
+    def __init__(self, grid_start=10, grid_end=20, same_sample=False):
+        filename = f'data/grids_{grid_start}_{grid_end}{"_same_sample" if same_sample else ""}.pt'
+
+        if os.path.isfile(filename):
+            assert False
+            self.adjs, self.eigvals, self.eigvecs, self.n_nodes, self.max_eigval, self.min_eigval, self.same_sample, self.n_max = torch.load(filename)
+            print(f'Dataset {filename} loaded from file')
+        else:
+            self.adjs = []
+            self.n_nodes = []
+            self.same_sample = same_sample
+            for i in range(grid_start, grid_end):
+                for j in range(grid_start, grid_end):
+                    G = nx.grid_2d_graph(i, j)
+                    adj = torch.from_numpy(nx.adjacency_matrix(G).toarray()).float()
+                    self.adjs.append(adj)
+                    self.n_nodes.append(len(G.nodes()))
+            self.n_max = (grid_end - 1) * (grid_end - 1)
+            # torch.save([self.adjs, self.eigvals, self.eigvecs, self.n_nodes, self.max_eigval, self.min_eigval, self.same_sample, self.n_max], filename)
+            print(f'Dataset {filename} saved with {len(self.adjs)} graphs')
+
+        # splits
+        random.seed(42)
+        graphs_len = len(self.adjs)
+        idxs = list(range(graphs_len))
+        random.shuffle(idxs)
+        self.test_idxs = idxs[int(0.8 * graphs_len):]
+        self.val_idxs = idxs[0:int(0.2*graphs_len)]
+        self.train_idxs = idxs[int(0.2*graphs_len):int(0.8*graphs_len)]
+
+    def __len__(self):
+        return len(self.adjs)
+
+    def __getitem__(self, idx):
+        if self.same_sample:
+            idx = self.__len__() - 1
+        graph = {}
+        graph["n_nodes"] = self.n_nodes[idx]
+        size_diff = self.n_max - graph["n_nodes"]
+        graph["adj"] = F.pad(self.adjs[idx], [0, size_diff, 0, size_diff])
+        return graph
 
 class PlanarDataset(Dataset):
     def __init__(self, n_nodes, n_graphs, k, same_sample=False, SON=False, ignore_first_eigv=False):
@@ -102,11 +147,55 @@ class SBMDataset(Dataset):
             size_diff += 1
         graph["mask"] = F.pad(torch.ones_like(self.adjs[idx]), [0, size_diff, 0, size_diff]).long()
         return graph
+    
+
+class EgoDataset(Dataset):
+    def __init__(self, size, same_sample=False):
+        assert size in ["small", "large"]
+        filename = f'/home/steve.azzolin/DiGress_fork/data/ego/ego_{size}.npy' # TODO: fix this
+
+        self.adjs = []
+        self.n_nodes = []
+        self.same_sample = same_sample
+
+        graphs = np.load(filename, allow_pickle=True)
+        print("Avg num nodes Ego", np.mean([g.shape[0] for g in graphs]))
+
+        for adj in graphs[:]:
+            adj = torch.from_numpy(adj).float()
+            self.adjs.append(adj)
+            self.n_nodes.append(adj.shape[0])
+        self.n_max = max(self.n_nodes)
+        print("Total num nodes/Avg num  = ", sum(self.n_nodes), max(self.n_nodes), np.mean(self.n_nodes))
+        print(f'Dataset {filename} saved with {len(self.adjs)} graphs')
+
+        # splits
+        random.seed(42)
+        graphs_len = len(self.adjs)
+        idxs = list(range(graphs_len))
+        random.shuffle(idxs)
+        self.test_idxs = idxs[int(0.8 * graphs_len):]
+        self.val_idxs = idxs[0:int(0.2*graphs_len)]
+        self.train_idxs = idxs[int(0.2*graphs_len):int(0.8*graphs_len)]
+        del graphs
+
+    def __len__(self):
+        return len(self.adjs)
+
+    def __getitem__(self, idx):
+        if self.same_sample:
+            idx = self.__len__() - 1
+        graph = {}
+        graph["n_nodes"] = self.n_nodes[idx]
+        size_diff = self.n_max - graph["n_nodes"]
+        graph["adj"] = F.pad(self.adjs[idx], [0, size_diff, 0, size_diff])
+        return graph
 
 
 def create(args):
 ### load datasets
     graphs=[]
+    train_idxs, val_idxs, test_idxs = [], [], []
     # synthetic graphs
     if args.graph_type=='ladder':
         graphs = []
@@ -169,11 +258,17 @@ def create(args):
             graphs.append(n_community(c_sizes, p_inter=0.01))
         args.max_prev_node = 80
     elif args.graph_type=='grid':
-        graphs = []
-        for i in range(10,20):
-            for j in range(10,20):
-                graphs.append(nx.grid_2d_graph(i,j))
+        # graphs = []
+        # for i in range(10,20):
+        #     for j in range(10,20):
+        #         graphs.append(nx.grid_2d_graph(i,j))
+        # args.max_prev_node = 40
+        G = GridDataset()
+        graphs = [nx.convert_matrix.from_numpy_matrix(G[i]["adj"].numpy()) for i in range(len(G))]
         args.max_prev_node = 40
+        train_idxs = G.train_idxs
+        val_idxs = G.val_idxs
+        test_idxs = G.test_idxs
     elif args.graph_type=='grid_small':
         graphs = []
         for i in range(2,5):
@@ -253,8 +348,21 @@ def create(args):
         G = PlanarDataset(n_nodes=64, n_graphs=200, k=2)
         graphs = [nx.convert_matrix.from_numpy_matrix(G[i]["adj"].numpy()) for i in range(len(G))]
         args.max_prev_node = 30
+        train_idxs = G.train_idxs
+        val_idxs = G.val_idxs
+        test_idxs = G.test_idxs
     elif args.graph_type=='sbm':
         G = SBMDataset(200, k=4, max_comm_size=100)
         graphs = [nx.convert_matrix.from_numpy_matrix(G[i]["adj"].numpy()) for i in range(len(G))]
         args.max_prev_node = 32
-    return graphs
+        train_idxs = G.train_idxs
+        val_idxs = G.val_idxs
+        test_idxs = G.test_idxs
+    elif args.graph_type=='ego':
+        G = EgoDataset("small")
+        graphs = [nx.convert_matrix.from_numpy_matrix(G[i]["adj"].numpy()) for i in range(len(G))]
+        args.max_prev_node = 17
+        train_idxs = G.train_idxs
+        val_idxs = G.val_idxs
+        test_idxs = G.test_idxs
+    return graphs, train_idxs, val_idxs, test_idxs

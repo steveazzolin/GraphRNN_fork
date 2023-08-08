@@ -27,15 +27,31 @@ if __name__ == '__main__':
             shutil.rmtree("tensorboard")
     configure("tensorboard/run"+time, flush_secs=5)
 
-    graphs = create_graphs.create(args)
+
+
+    graphs, train_idxs, val_idxs, test_idxs = create_graphs.create(args)
     
-    # split datasets
-    random.seed(123)
-    shuffle(graphs)
-    graphs_len = len(graphs)
-    graphs_test = graphs[int(0.8 * graphs_len):]
-    graphs_train = graphs[0:int(0.8*graphs_len)]
-    graphs_validate = graphs[0:int(0.2*graphs_len)]
+    if train_idxs is None or val_idxs is None or test_idxs is None:
+        print("Generating ex-novo split")
+        # split datasets
+        random.seed(123)
+        shuffle(graphs)
+        graphs_len = len(graphs)
+        graphs_test = graphs[int(0.8 * graphs_len):]
+        graphs_train = graphs[0:int(0.8*graphs_len)]
+        graphs_validate = graphs[0:int(0.2*graphs_len)]
+    else:
+        print("Using given splits")
+        graphs_test, graphs_train, graphs_validate = [], [], []
+        for i in range(len(graphs)):
+            if i in test_idxs:
+                graphs_test.append(graphs[i])
+            elif i in train_idxs:
+                graphs_train.append(graphs[i])
+            elif i in val_idxs:
+                graphs_validate.append(graphs[i])
+            else:
+                assert False
 
     # if use pre-saved graphs
     # dir_input = "/dfs/scratch0/jiaxuany0/graphs/"
