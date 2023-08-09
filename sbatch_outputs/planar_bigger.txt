@@ -1,0 +1,95 @@
+Extracting with BIGGER=32
+/home/steve.azzolin/GraphRNN_fork/model.py:299: UserWarning: nn.init.xavier_uniform is now deprecated in favor of nn.init.xavier_uniform_.
+  nn.init.xavier_uniform(param,gain=nn.init.calculate_gain('sigmoid'))
+/home/steve.azzolin/GraphRNN_fork/model.py:297: UserWarning: nn.init.constant is now deprecated in favor of nn.init.constant_.
+  nn.init.constant(param, 0.25)
+/home/steve.azzolin/GraphRNN_fork/model.py:302: UserWarning: nn.init.xavier_uniform is now deprecated in favor of nn.init.xavier_uniform_.
+  m.weight.data = init.xavier_uniform(m.weight.data, gain=nn.init.calculate_gain('relu'))
+/home/steve.azzolin/anaconda3/envs/graphrnn/lib/python3.6/site-packages/torch/nn/functional.py:1806: UserWarning: nn.functional.sigmoid is deprecated. Use torch.sigmoid instead.
+  warnings.warn("nn.functional.sigmoid is deprecated. Use torch.sigmoid instead.")
+Using planar dataset
+CUDA 1
+File name prefix GraphRNN_RNN_planar_4_128_
+Using given splits
+graph_validate_len 64.0
+graph_test_len 64.0
+total graph num: 200, training set: 120
+max number node: 64
+max/min number edge: 183; 173
+max previous node: 30
+train and test graphs saved at:  ./graphs/GraphRNN_RNN_planar_4_128_test_0.dat
+Loaded models from:  ./model_save/GraphRNN_RNN_planar_4_128_output_3000.dat
+model loaded!, lr: 1e-05, epoch: 3000
+test done, graphs saved
+Extracting with BIGGER=64
+/home/steve.azzolin/GraphRNN_fork/model.py:299: UserWarning: nn.init.xavier_uniform is now deprecated in favor of nn.init.xavier_uniform_.
+  nn.init.xavier_uniform(param,gain=nn.init.calculate_gain('sigmoid'))
+/home/steve.azzolin/GraphRNN_fork/model.py:297: UserWarning: nn.init.constant is now deprecated in favor of nn.init.constant_.
+  nn.init.constant(param, 0.25)
+/home/steve.azzolin/GraphRNN_fork/model.py:302: UserWarning: nn.init.xavier_uniform is now deprecated in favor of nn.init.xavier_uniform_.
+  m.weight.data = init.xavier_uniform(m.weight.data, gain=nn.init.calculate_gain('relu'))
+/home/steve.azzolin/anaconda3/envs/graphrnn/lib/python3.6/site-packages/torch/nn/functional.py:1806: UserWarning: nn.functional.sigmoid is deprecated. Use torch.sigmoid instead.
+  warnings.warn("nn.functional.sigmoid is deprecated. Use torch.sigmoid instead.")
+Using planar dataset
+CUDA 1
+File name prefix GraphRNN_RNN_planar_4_128_
+Using given splits
+graph_validate_len 64.0
+graph_test_len 64.0
+total graph num: 200, training set: 120
+max number node: 64
+max/min number edge: 182; 174
+max previous node: 30
+train and test graphs saved at:  ./graphs/GraphRNN_RNN_planar_4_128_test_0.dat
+Loaded models from:  ./model_save/GraphRNN_RNN_planar_4_128_output_3000.dat
+model loaded!, lr: 1e-05, epoch: 3000
+test done, graphs saved
+Extracting with BIGGER=192
+/home/steve.azzolin/GraphRNN_fork/model.py:299: UserWarning: nn.init.xavier_uniform is now deprecated in favor of nn.init.xavier_uniform_.
+  nn.init.xavier_uniform(param,gain=nn.init.calculate_gain('sigmoid'))
+/home/steve.azzolin/GraphRNN_fork/model.py:297: UserWarning: nn.init.constant is now deprecated in favor of nn.init.constant_.
+  nn.init.constant(param, 0.25)
+/home/steve.azzolin/GraphRNN_fork/model.py:302: UserWarning: nn.init.xavier_uniform is now deprecated in favor of nn.init.xavier_uniform_.
+  m.weight.data = init.xavier_uniform(m.weight.data, gain=nn.init.calculate_gain('relu'))
+/home/steve.azzolin/anaconda3/envs/graphrnn/lib/python3.6/site-packages/torch/nn/functional.py:1806: UserWarning: nn.functional.sigmoid is deprecated. Use torch.sigmoid instead.
+  warnings.warn("nn.functional.sigmoid is deprecated. Use torch.sigmoid instead.")
+Using planar dataset
+CUDA 1
+File name prefix GraphRNN_RNN_planar_4_128_
+Using given splits
+graph_validate_len 64.0
+graph_test_len 64.0
+total graph num: 200, training set: 120
+max number node: 64
+max/min number edge: 184; 173
+max previous node: 30
+train and test graphs saved at:  ./graphs/GraphRNN_RNN_planar_4_128_test_0.dat
+Loaded models from:  ./model_save/GraphRNN_RNN_planar_4_128_output_3000.dat
+model loaded!, lr: 1e-05, epoch: 3000
+test done, graphs saved
+Extracting with BIGGER=448
+/home/steve.azzolin/GraphRNN_fork/model.py:299: UserWarning: nn.init.xavier_uniform is now deprecated in favor of nn.init.xavier_uniform_.
+  nn.init.xavier_uniform(param,gain=nn.init.calculate_gain('sigmoid'))
+/home/steve.azzolin/GraphRNN_fork/model.py:297: UserWarning: nn.init.constant is now deprecated in favor of nn.init.constant_.
+  nn.init.constant(param, 0.25)
+/home/steve.azzolin/GraphRNN_fork/model.py:302: UserWarning: nn.init.xavier_uniform is now deprecated in favor of nn.init.xavier_uniform_.
+  m.weight.data = init.xavier_uniform(m.weight.data, gain=nn.init.calculate_gain('relu'))
+/home/steve.azzolin/anaconda3/envs/graphrnn/lib/python3.6/site-packages/torch/nn/functional.py:1806: UserWarning: nn.functional.sigmoid is deprecated. Use torch.sigmoid instead.
+  warnings.warn("nn.functional.sigmoid is deprecated. Use torch.sigmoid instead.")
+Using planar dataset
+CUDA 1
+File name prefix GraphRNN_RNN_planar_4_128_
+Using given splits
+graph_validate_len 64.0
+graph_test_len 64.0
+total graph num: 200, training set: 120
+max number node: 64
+max/min number edge: 182; 174
+max previous node: 30
+train and test graphs saved at:  ./graphs/GraphRNN_RNN_planar_4_128_test_0.dat
+Loaded models from:  ./model_save/GraphRNN_RNN_planar_4_128_output_3000.dat
+model loaded!, lr: 1e-05, epoch: 3000
+test done, graphs saved
+/home/steve.azzolin/anaconda3/envs/graphrnn/bin:/home/steve.azzolin/anaconda3/condabin:/home/steve.azzolin/.local/bin:/home/steve.azzolin/bin:/opt/xcat/bin:/opt/xcat/sbin:/opt/xcat/share/xcat/tools:/usr/share/Modules/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin
+DONE
+Execution lasted 6 minutes

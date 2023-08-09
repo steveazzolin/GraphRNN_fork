@@ -1,0 +1,107 @@
+Extracting with BIGGER=8
+/home/steve.azzolin/GraphRNN_fork/model.py:299: UserWarning: nn.init.xavier_uniform is now deprecated in favor of nn.init.xavier_uniform_.
+  nn.init.xavier_uniform(param,gain=nn.init.calculate_gain('sigmoid'))
+/home/steve.azzolin/GraphRNN_fork/model.py:297: UserWarning: nn.init.constant is now deprecated in favor of nn.init.constant_.
+  nn.init.constant(param, 0.25)
+/home/steve.azzolin/GraphRNN_fork/model.py:302: UserWarning: nn.init.xavier_uniform is now deprecated in favor of nn.init.xavier_uniform_.
+  m.weight.data = init.xavier_uniform(m.weight.data, gain=nn.init.calculate_gain('relu'))
+/home/steve.azzolin/anaconda3/envs/graphrnn/lib/python3.6/site-packages/torch/nn/functional.py:1806: UserWarning: nn.functional.sigmoid is deprecated. Use torch.sigmoid instead.
+  warnings.warn("nn.functional.sigmoid is deprecated. Use torch.sigmoid instead.")
+Using ego dataset
+CUDA 1
+File name prefix GraphRNN_RNN_ego_4_128_
+Avg num nodes Ego 8.79
+Total num nodes/Avg num  =  1758 17 8.79
+Dataset /home/steve.azzolin/DiGress_fork/data/ego/ego_small.npy saved with 200 graphs
+Using given splits
+graph_validate_len 17.0
+graph_test_len 17.0
+total graph num: 200, training set: 120
+max number node: 17
+max/min number edge: 36; 3
+max previous node: 17
+train and test graphs saved at:  ./graphs/GraphRNN_RNN_ego_4_128_test_0.dat
+Loaded models from:  ./model_save/GraphRNN_RNN_ego_4_128_output_3000.dat
+model loaded!, lr: 1e-05, epoch: 3000
+test done, graphs saved
+Extracting with BIGGER=17
+/home/steve.azzolin/GraphRNN_fork/model.py:299: UserWarning: nn.init.xavier_uniform is now deprecated in favor of nn.init.xavier_uniform_.
+  nn.init.xavier_uniform(param,gain=nn.init.calculate_gain('sigmoid'))
+/home/steve.azzolin/GraphRNN_fork/model.py:297: UserWarning: nn.init.constant is now deprecated in favor of nn.init.constant_.
+  nn.init.constant(param, 0.25)
+/home/steve.azzolin/GraphRNN_fork/model.py:302: UserWarning: nn.init.xavier_uniform is now deprecated in favor of nn.init.xavier_uniform_.
+  m.weight.data = init.xavier_uniform(m.weight.data, gain=nn.init.calculate_gain('relu'))
+/home/steve.azzolin/anaconda3/envs/graphrnn/lib/python3.6/site-packages/torch/nn/functional.py:1806: UserWarning: nn.functional.sigmoid is deprecated. Use torch.sigmoid instead.
+  warnings.warn("nn.functional.sigmoid is deprecated. Use torch.sigmoid instead.")
+Using ego dataset
+CUDA 1
+File name prefix GraphRNN_RNN_ego_4_128_
+Avg num nodes Ego 8.79
+Total num nodes/Avg num  =  1758 17 8.79
+Dataset /home/steve.azzolin/DiGress_fork/data/ego/ego_small.npy saved with 200 graphs
+Using given splits
+graph_validate_len 17.0
+graph_test_len 17.0
+total graph num: 200, training set: 120
+max number node: 17
+max/min number edge: 36; 3
+max previous node: 17
+train and test graphs saved at:  ./graphs/GraphRNN_RNN_ego_4_128_test_0.dat
+Loaded models from:  ./model_save/GraphRNN_RNN_ego_4_128_output_3000.dat
+model loaded!, lr: 1e-05, epoch: 3000
+test done, graphs saved
+Extracting with BIGGER=51
+/home/steve.azzolin/GraphRNN_fork/model.py:299: UserWarning: nn.init.xavier_uniform is now deprecated in favor of nn.init.xavier_uniform_.
+  nn.init.xavier_uniform(param,gain=nn.init.calculate_gain('sigmoid'))
+/home/steve.azzolin/GraphRNN_fork/model.py:297: UserWarning: nn.init.constant is now deprecated in favor of nn.init.constant_.
+  nn.init.constant(param, 0.25)
+/home/steve.azzolin/GraphRNN_fork/model.py:302: UserWarning: nn.init.xavier_uniform is now deprecated in favor of nn.init.xavier_uniform_.
+  m.weight.data = init.xavier_uniform(m.weight.data, gain=nn.init.calculate_gain('relu'))
+/home/steve.azzolin/anaconda3/envs/graphrnn/lib/python3.6/site-packages/torch/nn/functional.py:1806: UserWarning: nn.functional.sigmoid is deprecated. Use torch.sigmoid instead.
+  warnings.warn("nn.functional.sigmoid is deprecated. Use torch.sigmoid instead.")
+Using ego dataset
+CUDA 1
+File name prefix GraphRNN_RNN_ego_4_128_
+Avg num nodes Ego 8.79
+Total num nodes/Avg num  =  1758 17 8.79
+Dataset /home/steve.azzolin/DiGress_fork/data/ego/ego_small.npy saved with 200 graphs
+Using given splits
+graph_validate_len 17.0
+graph_test_len 17.0
+total graph num: 200, training set: 120
+max number node: 17
+max/min number edge: 36; 3
+max previous node: 17
+train and test graphs saved at:  ./graphs/GraphRNN_RNN_ego_4_128_test_0.dat
+Loaded models from:  ./model_save/GraphRNN_RNN_ego_4_128_output_3000.dat
+model loaded!, lr: 1e-05, epoch: 3000
+test done, graphs saved
+Extracting with BIGGER=119
+/home/steve.azzolin/GraphRNN_fork/model.py:299: UserWarning: nn.init.xavier_uniform is now deprecated in favor of nn.init.xavier_uniform_.
+  nn.init.xavier_uniform(param,gain=nn.init.calculate_gain('sigmoid'))
+/home/steve.azzolin/GraphRNN_fork/model.py:297: UserWarning: nn.init.constant is now deprecated in favor of nn.init.constant_.
+  nn.init.constant(param, 0.25)
+/home/steve.azzolin/GraphRNN_fork/model.py:302: UserWarning: nn.init.xavier_uniform is now deprecated in favor of nn.init.xavier_uniform_.
+  m.weight.data = init.xavier_uniform(m.weight.data, gain=nn.init.calculate_gain('relu'))
+/home/steve.azzolin/anaconda3/envs/graphrnn/lib/python3.6/site-packages/torch/nn/functional.py:1806: UserWarning: nn.functional.sigmoid is deprecated. Use torch.sigmoid instead.
+  warnings.warn("nn.functional.sigmoid is deprecated. Use torch.sigmoid instead.")
+Using ego dataset
+CUDA 1
+File name prefix GraphRNN_RNN_ego_4_128_
+Avg num nodes Ego 8.79
+Total num nodes/Avg num  =  1758 17 8.79
+Dataset /home/steve.azzolin/DiGress_fork/data/ego/ego_small.npy saved with 200 graphs
+Using given splits
+graph_validate_len 17.0
+graph_test_len 17.0
+total graph num: 200, training set: 120
+max number node: 17
+max/min number edge: 36; 3
+max previous node: 17
+train and test graphs saved at:  ./graphs/GraphRNN_RNN_ego_4_128_test_0.dat
+Loaded models from:  ./model_save/GraphRNN_RNN_ego_4_128_output_3000.dat
+model loaded!, lr: 1e-05, epoch: 3000
+test done, graphs saved
+/opt/xcat/bin:/opt/xcat/sbin:/opt/xcat/share/xcat/tools:/home/steve.azzolin/.vscode-server/bin/6445d93c81ebe42c4cbd7a60712e0b17d9463e97/bin/remote-cli:/opt/xcat/bin:/opt/xcat/sbin:/opt/xcat/share/xcat/tools:/home/steve.azzolin/anaconda3/envs/graphrnn/bin:/home/steve.azzolin/anaconda3/condabin:/home/steve.azzolin/.local/bin:/home/steve.azzolin/bin:/opt/xcat/bin:/opt/xcat/sbin:/opt/xcat/share/xcat/tools:/usr/share/Modules/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin
+DONE
+Execution lasted 1 minutes
