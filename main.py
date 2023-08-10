@@ -63,6 +63,9 @@ if __name__ == '__main__':
     # graphs_validate = graphs[int(0.2 * graphs_len):int(0.4 * graphs_len)]
 
 
+    print(np.mean([len(g.nodes()) for g in graphs]), np.max([len(g.nodes()) for g in graphs]), np.min([len(g.nodes()) for g in graphs]))
+
+
     graph_validate_len = 0
     for graph in graphs_validate:
         graph_validate_len += graph.number_of_nodes()
@@ -147,7 +150,10 @@ if __name__ == '__main__':
                            has_output=True, output_size=1).cuda()
 
     ### start training
-    train(args, dataset_loader, rnn, output)
+    if not args.load:
+        train(args, dataset_loader, rnn, output)
+    else:
+        generate_only(args, rnn, output)
 
     ### graph completion
     # train_graph_completion(args,dataset_loader,rnn,output)
