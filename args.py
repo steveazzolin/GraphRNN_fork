@@ -5,6 +5,9 @@ class Args():
     def __init__(self):
         parser = argparse.ArgumentParser()
         parser.add_argument('--graph_type', type=str, help='dataset to use', default=None)
+        parser.add_argument('--load', type=bool, help='dataset to use', default=None)
+        parser.add_argument('--load_epoch', type=str, help='dataset to use', default=None)
+        parser.add_argument('--bigger_graphs', type=int, help='dataset to use', default=None)
         args = parser.parse_args()
 
 
@@ -96,9 +99,10 @@ class Args():
         self.nll_save_path = self.dir_input+'nll/'
 
 
-        self.load = False # if load model, default lr is very low
-        self.load_epoch = 3000
+        self.load = False if args.load is None else args.load # if load model, default lr is very low
+        self.load_epoch = 3000 if args.load_epoch is None else args.load_epoch
         self.save = True
+        self.bigger_graphs = 0 if args.bigger_graphs is None else args.bigger_graphs
 
 
         ### baseline config

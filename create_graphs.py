@@ -51,7 +51,7 @@ class GridDataset(Dataset):
         graph = {}
         graph["n_nodes"] = self.n_nodes[idx]
         size_diff = self.n_max - graph["n_nodes"]
-        graph["adj"] = F.pad(self.adjs[idx], [0, size_diff, 0, size_diff])
+        graph["adj"] = self.adjs[idx] #F.pad(self.adjs[idx], [0, size_diff, 0, size_diff])
         return graph
 
 class PlanarDataset(Dataset):
@@ -93,6 +93,15 @@ class PlanarDataset(Dataset):
             if eigv[self.k] > self.max_k_eigval:
                 self.max_k_eigval = eigv[self.k].item()
 
+        # splits
+        random.seed(42)
+        graphs_len = len(self.adjs)
+        idxs = list(range(graphs_len))
+        random.shuffle(idxs)
+        self.test_idxs = idxs[int(0.8 * graphs_len):]
+        self.val_idxs = idxs[0:int(0.2*graphs_len)]
+        self.train_idxs = idxs[int(0.2*graphs_len):int(0.8*graphs_len)]
+
     def __len__(self):
         return len(self.adjs)
 
@@ -102,10 +111,10 @@ class PlanarDataset(Dataset):
         graph = {}
         graph["n_nodes"] = self.n_nodes[idx]
         size_diff = self.n_max - graph["n_nodes"]
-        graph["adj"] = F.pad(self.adjs[idx], [0, size_diff, 0, size_diff])
+        graph["adj"] = self.adjs[idx] #F.pad(self.adjs[idx], [0, size_diff, 0, size_diff])
         if self.ignore_first_eigv:
             size_diff += 1
-        graph["mask"] = F.pad(torch.ones_like(self.adjs[idx]), [0, size_diff, 0, size_diff]).long()
+        #graph["mask"] = F.pad(torch.ones_like(self.adjs[idx]), [0, size_diff, 0, size_diff]).long()
         return graph
     
 class SBMDataset(Dataset):
@@ -133,6 +142,16 @@ class SBMDataset(Dataset):
                 self.n_nodes.append(len(G.nodes()))
             self.n_max = max(self.n_nodes)
 
+
+        # splits
+        random.seed(42)
+        graphs_len = len(self.adjs)
+        idxs = list(range(graphs_len))
+        random.shuffle(idxs)
+        self.test_idxs = idxs[int(0.8 * graphs_len):]
+        self.val_idxs = idxs[0:int(0.2*graphs_len)]
+        self.train_idxs = idxs[int(0.2*graphs_len):int(0.8*graphs_len)]
+
     def __len__(self):
         return len(self.adjs)
 
@@ -142,10 +161,9 @@ class SBMDataset(Dataset):
         graph = {}
         graph["n_nodes"] = self.n_nodes[idx]
         size_diff = self.n_max - graph["n_nodes"]
-        graph["adj"] = F.pad(self.adjs[idx], [0, size_diff, 0, size_diff])
+        graph["adj"] = self.adjs[idx] #F.pad(self.adjs[idx], [0, size_diff, 0, size_diff])
         if self.ignore_first_eigv:
             size_diff += 1
-        graph["mask"] = F.pad(torch.ones_like(self.adjs[idx]), [0, size_diff, 0, size_diff]).long()
         return graph
     
 
@@ -188,12 +206,12 @@ class EgoDataset(Dataset):
         graph = {}
         graph["n_nodes"] = self.n_nodes[idx]
         size_diff = self.n_max - graph["n_nodes"]
-        graph["adj"] = F.pad(self.adjs[idx], [0, size_diff, 0, size_diff])
+        graph["adj"] = self.adjs[idx] #F.pad(self.adjs[idx], [0, size_diff, 0, size_diff])
         return graph
 
 
 def create(args):
-### load datasets
+    ### load datasets
     graphs=[]
     train_idxs, val_idxs, test_idxs = [], [], []
     # synthetic graphs
@@ -249,13 +267,29 @@ def create(args):
                 for k in range(100):
                     graphs.append(caveman_special(i, j, p_edge=0.5))
         args.max_prev_node = 20
-    elif args.graph_type.startswith('community'):
-        num_communities = int(args.graph_type[-1])
-        print('Creating dataset with ', num_communities, ' communities')
-        c_sizes = np.random.choice([12, 13, 14, 15, 16, 17], num_communities)
-        #c_sizes = [15] * num_communities
-        for k in range(3000):
-            graphs.append(n_community(c_sizes, p_inter=0.01))
+    elif args.graph_type.startswith('community') or args.graph_type.startswith('comm'):
+        # num_communities = int(args.graph_type[-1])
+        # print('Creating dataset with ', num_communities, ' communities')
+        # c_sizes = np.random.choice([12, 13, 14, 15, 16, 17], num_communities)
+        # #c_sizes = [15] * num_communities
+        # for k in range(3000):
+        #     graphs.append(n_community(c_sizes, p_inter=0.01))
+        # args.max_prev_node = 80
+        adjs = np.load("/home/steve.azzolin/DiGress_fork/data/comm/comm_train_val_test.npy", allow_pickle=True)
+        c = 0
+        graphs = []
+        train_idxs, val_idxs, seltest_idxs = [], [], []
+        for split in range(3):
+            for adj in adjs[split]:
+                adj = nx.convert_matrix.from_numpy_matrix(adj)
+                graphs.append(adj)
+                if split == 0:
+                    train_idxs.append(c)
+                elif split == 1:
+                    val_idxs.append(c)
+                elif split == 2:
+                    test_idxs.append(c)
+                c += 1
         args.max_prev_node = 80
     elif args.graph_type=='grid':
         # graphs = []
@@ -265,6 +299,8 @@ def create(args):
         # args.max_prev_node = 40
         G = GridDataset()
         graphs = [nx.convert_matrix.from_numpy_matrix(G[i]["adj"].numpy()) for i in range(len(G))]
+        [g.remove_nodes_from(list(nx.isolates(g))) for g in graphs] # remove isolated nodes (in GRID we have all the ones  relative to padding)
+    
         args.max_prev_node = 40
         train_idxs = G.train_idxs
         val_idxs = G.val_idxs
