@@ -151,7 +151,6 @@ if __name__ == '__main__':
 
     ### start training
     if not args.load:
-        assert False
         train(args, dataset_loader, rnn, output)
     else:
         assert args.bigger_graphs > 0, args.bigger_graphs
