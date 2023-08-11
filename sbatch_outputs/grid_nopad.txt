@@ -1,0 +1,83 @@
+Using grid dataset
+CUDA 1
+File name prefix GraphRNN_RNN_grid_4_128_
+Dataset data/grids_10_20.pt saved with 100 graphs
+Using given splits
+210.25 361 100
+graph_validate_len 202.25
+graph_test_len 212.65
+total graph num: 100, training set: 60
+max number node: 361
+max/min number edge: 684; 180
+max previous node: 40
+train and test graphs saved at:  ./graphs/GraphRNN_RNN_grid_4_128_test_0.dat
+/home/steve.azzolin/GraphRNN_fork/model.py:299: UserWarning: nn.init.xavier_uniform is now deprecated in favor of nn.init.xavier_uniform_.
+  nn.init.xavier_uniform(param,gain=nn.init.calculate_gain('sigmoid'))
+/home/steve.azzolin/GraphRNN_fork/model.py:297: UserWarning: nn.init.constant is now deprecated in favor of nn.init.constant_.
+  nn.init.constant(param, 0.25)
+/home/steve.azzolin/GraphRNN_fork/model.py:302: UserWarning: nn.init.xavier_uniform is now deprecated in favor of nn.init.xavier_uniform_.
+  m.weight.data = init.xavier_uniform(m.weight.data, gain=nn.init.calculate_gain('relu'))
+/home/steve.azzolin/anaconda3/envs/graphrnn/lib/python3.6/site-packages/torch/nn/functional.py:1806: UserWarning: nn.functional.sigmoid is deprecated. Use torch.sigmoid instead.
+  warnings.warn("nn.functional.sigmoid is deprecated. Use torch.sigmoid instead.")
+Epoch: 100/3000, train loss: 0.041586, graph type: grid, num_layer: 4, hidden: 128
+test done, graphs saved
+Epoch: 200/3000, train loss: 0.032204, graph type: grid, num_layer: 4, hidden: 128
+test done, graphs saved
+Epoch: 300/3000, train loss: 0.022501, graph type: grid, num_layer: 4, hidden: 128
+test done, graphs saved
+Epoch: 400/3000, train loss: 0.019673, graph type: grid, num_layer: 4, hidden: 128
+test done, graphs saved
+Epoch: 500/3000, train loss: 0.018380, graph type: grid, num_layer: 4, hidden: 128
+test done, graphs saved
+Epoch: 600/3000, train loss: 0.017030, graph type: grid, num_layer: 4, hidden: 128
+test done, graphs saved
+Epoch: 700/3000, train loss: 0.014845, graph type: grid, num_layer: 4, hidden: 128
+test done, graphs saved
+Epoch: 800/3000, train loss: 0.012735, graph type: grid, num_layer: 4, hidden: 128
+test done, graphs saved
+Epoch: 900/3000, train loss: 0.014518, graph type: grid, num_layer: 4, hidden: 128
+test done, graphs saved
+Epoch: 1000/3000, train loss: 0.011221, graph type: grid, num_layer: 4, hidden: 128
+test done, graphs saved
+Epoch: 1100/3000, train loss: 0.012320, graph type: grid, num_layer: 4, hidden: 128
+test done, graphs saved
+Epoch: 1200/3000, train loss: 0.009167, graph type: grid, num_layer: 4, hidden: 128
+test done, graphs saved
+Epoch: 1300/3000, train loss: 0.009830, graph type: grid, num_layer: 4, hidden: 128
+test done, graphs saved
+Epoch: 1400/3000, train loss: 0.009828, graph type: grid, num_layer: 4, hidden: 128
+test done, graphs saved
+Epoch: 1500/3000, train loss: 0.008101, graph type: grid, num_layer: 4, hidden: 128
+test done, graphs saved
+Epoch: 1600/3000, train loss: 0.027627, graph type: grid, num_layer: 4, hidden: 128
+test done, graphs saved
+Epoch: 1700/3000, train loss: 0.007235, graph type: grid, num_layer: 4, hidden: 128
+test done, graphs saved
+Epoch: 1800/3000, train loss: 0.007856, graph type: grid, num_layer: 4, hidden: 128
+test done, graphs saved
+Epoch: 1900/3000, train loss: 0.005983, graph type: grid, num_layer: 4, hidden: 128
+test done, graphs saved
+Epoch: 2000/3000, train loss: 0.006916, graph type: grid, num_layer: 4, hidden: 128
+test done, graphs saved
+Epoch: 2100/3000, train loss: 0.008106, graph type: grid, num_layer: 4, hidden: 128
+test done, graphs saved
+Epoch: 2200/3000, train loss: 0.005927, graph type: grid, num_layer: 4, hidden: 128
+test done, graphs saved
+Epoch: 2300/3000, train loss: 0.007146, graph type: grid, num_layer: 4, hidden: 128
+test done, graphs saved
+Epoch: 2400/3000, train loss: 0.006811, graph type: grid, num_layer: 4, hidden: 128
+test done, graphs saved
+Epoch: 2500/3000, train loss: 0.006843, graph type: grid, num_layer: 4, hidden: 128
+test done, graphs saved
+Epoch: 2600/3000, train loss: 0.006820, graph type: grid, num_layer: 4, hidden: 128
+test done, graphs saved
+Epoch: 2700/3000, train loss: 0.006017, graph type: grid, num_layer: 4, hidden: 128
+test done, graphs saved
+Epoch: 2800/3000, train loss: 0.006545, graph type: grid, num_layer: 4, hidden: 128
+test done, graphs saved
+Epoch: 2900/3000, train loss: 0.005469, graph type: grid, num_layer: 4, hidden: 128
+test done, graphs saved
+Epoch: 3000/3000, train loss: 0.005408, graph type: grid, num_layer: 4, hidden: 128
+test done, graphs saved
+DONE
+Execution lasted 254 minutes

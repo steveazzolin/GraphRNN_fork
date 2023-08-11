@@ -1,0 +1,231 @@
+Extracting with BIGGER=1
+/home/steve.azzolin/GraphRNN_fork/model.py:299: UserWarning: nn.init.xavier_uniform is now deprecated in favor of nn.init.xavier_uniform_.
+  nn.init.xavier_uniform(param,gain=nn.init.calculate_gain('sigmoid'))
+/home/steve.azzolin/GraphRNN_fork/model.py:297: UserWarning: nn.init.constant is now deprecated in favor of nn.init.constant_.
+  nn.init.constant(param, 0.25)
+/home/steve.azzolin/GraphRNN_fork/model.py:302: UserWarning: nn.init.xavier_uniform is now deprecated in favor of nn.init.xavier_uniform_.
+  m.weight.data = init.xavier_uniform(m.weight.data, gain=nn.init.calculate_gain('relu'))
+/home/steve.azzolin/anaconda3/envs/graphrnn/lib/python3.6/site-packages/torch/nn/functional.py:1806: UserWarning: nn.functional.sigmoid is deprecated. Use torch.sigmoid instead.
+  warnings.warn("nn.functional.sigmoid is deprecated. Use torch.sigmoid instead.")
+Using sbm dataset
+CUDA 1
+File name prefix GraphRNN_RNN_sbm_4_128_
+Using given splits
+208.95 411 48
+graph_validate_len 213.225
+graph_test_len 199.675
+total graph num: 200, training set: 120
+max number node: 411
+max/min number edge: 5395; 168
+max previous node: 32
+train and test graphs saved at:  ./graphs/GraphRNN_RNN_sbm_4_128_test_0.dat
+Loaded models from:  ./model_save/GraphRNN_RNN_sbm_4_128_output_2900.dat
+model loaded!, lr: 1e-05, epoch: 2900
+Found bigger =  1
+Found SBM run with bigger =  1
+Found SBM run with bigger =  1
+Found SBM run with bigger =  1
+Found SBM run with bigger =  1
+Found SBM run with bigger =  1
+Found SBM run with bigger =  1
+Found SBM run with bigger =  1
+Found SBM run with bigger =  1
+Found SBM run with bigger =  1
+Found SBM run with bigger =  1
+Found SBM run with bigger =  1
+Found SBM run with bigger =  1
+Found SBM run with bigger =  1
+Found SBM run with bigger =  1
+Found SBM run with bigger =  1
+Found SBM run with bigger =  1
+Found SBM run with bigger =  1
+Found SBM run with bigger =  1
+Found SBM run with bigger =  1
+Found SBM run with bigger =  1
+Found SBM run with bigger =  1
+Found SBM run with bigger =  1
+Found SBM run with bigger =  1
+Found SBM run with bigger =  1
+Found SBM run with bigger =  1
+Found SBM run with bigger =  1
+Found SBM run with bigger =  1
+Found SBM run with bigger =  1
+Found SBM run with bigger =  1
+Found SBM run with bigger =  1
+Found SBM run with bigger =  1
+Found SBM run with bigger =  1
+test done, graphs saved
+Extracting with BIGGER=2
+/home/steve.azzolin/GraphRNN_fork/model.py:299: UserWarning: nn.init.xavier_uniform is now deprecated in favor of nn.init.xavier_uniform_.
+  nn.init.xavier_uniform(param,gain=nn.init.calculate_gain('sigmoid'))
+/home/steve.azzolin/GraphRNN_fork/model.py:297: UserWarning: nn.init.constant is now deprecated in favor of nn.init.constant_.
+  nn.init.constant(param, 0.25)
+/home/steve.azzolin/GraphRNN_fork/model.py:302: UserWarning: nn.init.xavier_uniform is now deprecated in favor of nn.init.xavier_uniform_.
+  m.weight.data = init.xavier_uniform(m.weight.data, gain=nn.init.calculate_gain('relu'))
+/home/steve.azzolin/anaconda3/envs/graphrnn/lib/python3.6/site-packages/torch/nn/functional.py:1806: UserWarning: nn.functional.sigmoid is deprecated. Use torch.sigmoid instead.
+  warnings.warn("nn.functional.sigmoid is deprecated. Use torch.sigmoid instead.")
+Using sbm dataset
+CUDA 1
+File name prefix GraphRNN_RNN_sbm_4_128_
+Using given splits
+217.95 426 42
+graph_validate_len 216.0
+graph_test_len 214.3
+total graph num: 200, training set: 120
+max number node: 426
+max/min number edge: 6077; 120
+max previous node: 32
+train and test graphs saved at:  ./graphs/GraphRNN_RNN_sbm_4_128_test_0.dat
+Loaded models from:  ./model_save/GraphRNN_RNN_sbm_4_128_output_2900.dat
+model loaded!, lr: 1e-05, epoch: 2900
+Found bigger =  2
+Found SBM run with bigger =  2
+Found SBM run with bigger =  2
+Found SBM run with bigger =  2
+Found SBM run with bigger =  2
+Found SBM run with bigger =  2
+Found SBM run with bigger =  2
+Found SBM run with bigger =  2
+Found SBM run with bigger =  2
+Found SBM run with bigger =  2
+Found SBM run with bigger =  2
+Found SBM run with bigger =  2
+Found SBM run with bigger =  2
+Found SBM run with bigger =  2
+Found SBM run with bigger =  2
+Found SBM run with bigger =  2
+Found SBM run with bigger =  2
+Found SBM run with bigger =  2
+Found SBM run with bigger =  2
+Found SBM run with bigger =  2
+Found SBM run with bigger =  2
+Found SBM run with bigger =  2
+Found SBM run with bigger =  2
+Found SBM run with bigger =  2
+Found SBM run with bigger =  2
+Found SBM run with bigger =  2
+Found SBM run with bigger =  2
+Found SBM run with bigger =  2
+Found SBM run with bigger =  2
+Found SBM run with bigger =  2
+Found SBM run with bigger =  2
+Found SBM run with bigger =  2
+Found SBM run with bigger =  2
+test done, graphs saved
+Extracting with BIGGER=4
+/home/steve.azzolin/GraphRNN_fork/model.py:299: UserWarning: nn.init.xavier_uniform is now deprecated in favor of nn.init.xavier_uniform_.
+  nn.init.xavier_uniform(param,gain=nn.init.calculate_gain('sigmoid'))
+/home/steve.azzolin/GraphRNN_fork/model.py:297: UserWarning: nn.init.constant is now deprecated in favor of nn.init.constant_.
+  nn.init.constant(param, 0.25)
+/home/steve.azzolin/GraphRNN_fork/model.py:302: UserWarning: nn.init.xavier_uniform is now deprecated in favor of nn.init.xavier_uniform_.
+  m.weight.data = init.xavier_uniform(m.weight.data, gain=nn.init.calculate_gain('relu'))
+/home/steve.azzolin/anaconda3/envs/graphrnn/lib/python3.6/site-packages/torch/nn/functional.py:1806: UserWarning: nn.functional.sigmoid is deprecated. Use torch.sigmoid instead.
+  warnings.warn("nn.functional.sigmoid is deprecated. Use torch.sigmoid instead.")
+Using sbm dataset
+CUDA 1
+File name prefix GraphRNN_RNN_sbm_4_128_
+Using given splits
+220.33 405 48
+graph_validate_len 222.3
+graph_test_len 201.575
+total graph num: 200, training set: 120
+max number node: 405
+max/min number edge: 5351; 163
+max previous node: 32
+train and test graphs saved at:  ./graphs/GraphRNN_RNN_sbm_4_128_test_0.dat
+Loaded models from:  ./model_save/GraphRNN_RNN_sbm_4_128_output_2900.dat
+model loaded!, lr: 1e-05, epoch: 2900
+Found bigger =  4
+Found SBM run with bigger =  4
+Found SBM run with bigger =  4
+Found SBM run with bigger =  4
+Found SBM run with bigger =  4
+Found SBM run with bigger =  4
+Found SBM run with bigger =  4
+Found SBM run with bigger =  4
+Found SBM run with bigger =  4
+Found SBM run with bigger =  4
+Found SBM run with bigger =  4
+Found SBM run with bigger =  4
+Found SBM run with bigger =  4
+Found SBM run with bigger =  4
+Found SBM run with bigger =  4
+Found SBM run with bigger =  4
+Found SBM run with bigger =  4
+Found SBM run with bigger =  4
+Found SBM run with bigger =  4
+Found SBM run with bigger =  4
+Found SBM run with bigger =  4
+Found SBM run with bigger =  4
+Found SBM run with bigger =  4
+Found SBM run with bigger =  4
+Found SBM run with bigger =  4
+Found SBM run with bigger =  4
+Found SBM run with bigger =  4
+Found SBM run with bigger =  4
+Found SBM run with bigger =  4
+Found SBM run with bigger =  4
+Found SBM run with bigger =  4
+Found SBM run with bigger =  4
+Found SBM run with bigger =  4
+test done, graphs saved
+Extracting with BIGGER=8
+/home/steve.azzolin/GraphRNN_fork/model.py:299: UserWarning: nn.init.xavier_uniform is now deprecated in favor of nn.init.xavier_uniform_.
+  nn.init.xavier_uniform(param,gain=nn.init.calculate_gain('sigmoid'))
+/home/steve.azzolin/GraphRNN_fork/model.py:297: UserWarning: nn.init.constant is now deprecated in favor of nn.init.constant_.
+  nn.init.constant(param, 0.25)
+/home/steve.azzolin/GraphRNN_fork/model.py:302: UserWarning: nn.init.xavier_uniform is now deprecated in favor of nn.init.xavier_uniform_.
+  m.weight.data = init.xavier_uniform(m.weight.data, gain=nn.init.calculate_gain('relu'))
+/home/steve.azzolin/anaconda3/envs/graphrnn/lib/python3.6/site-packages/torch/nn/functional.py:1806: UserWarning: nn.functional.sigmoid is deprecated. Use torch.sigmoid instead.
+  warnings.warn("nn.functional.sigmoid is deprecated. Use torch.sigmoid instead.")
+Using sbm dataset
+CUDA 1
+File name prefix GraphRNN_RNN_sbm_4_128_
+Using given splits
+210.24 398 51
+graph_validate_len 204.25
+graph_test_len 210.275
+total graph num: 200, training set: 120
+max number node: 398
+max/min number edge: 5113; 193
+max previous node: 32
+train and test graphs saved at:  ./graphs/GraphRNN_RNN_sbm_4_128_test_0.dat
+Loaded models from:  ./model_save/GraphRNN_RNN_sbm_4_128_output_2900.dat
+model loaded!, lr: 1e-05, epoch: 2900
+Found bigger =  8
+Found SBM run with bigger =  8
+Found SBM run with bigger =  8
+Found SBM run with bigger =  8
+Found SBM run with bigger =  8
+Found SBM run with bigger =  8
+Found SBM run with bigger =  8
+Found SBM run with bigger =  8
+Found SBM run with bigger =  8
+Found SBM run with bigger =  8
+Found SBM run with bigger =  8
+Found SBM run with bigger =  8
+Found SBM run with bigger =  8
+Found SBM run with bigger =  8
+Found SBM run with bigger =  8
+Found SBM run with bigger =  8
+Found SBM run with bigger =  8
+Found SBM run with bigger =  8
+Found SBM run with bigger =  8
+Found SBM run with bigger =  8
+Found SBM run with bigger =  8
+Found SBM run with bigger =  8
+Found SBM run with bigger =  8
+Found SBM run with bigger =  8
+Found SBM run with bigger =  8
+Found SBM run with bigger =  8
+Found SBM run with bigger =  8
+Found SBM run with bigger =  8
+Found SBM run with bigger =  8
+Found SBM run with bigger =  8
+Found SBM run with bigger =  8
+Found SBM run with bigger =  8
+Found SBM run with bigger =  8
+test done, graphs saved
+/home/steve.azzolin/anaconda3/envs/graphrnn/bin:/home/steve.azzolin/anaconda3/condabin:/home/steve.azzolin/.local/bin:/home/steve.azzolin/bin:/opt/xcat/bin:/opt/xcat/sbin:/opt/xcat/share/xcat/tools:/usr/share/Modules/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin
+DONE
+Execution lasted 24 minutes

@@ -1,0 +1,22 @@
+/home/steve.azzolin/GraphRNN_fork/model.py:299: UserWarning: nn.init.xavier_uniform is now deprecated in favor of nn.init.xavier_uniform_.
+  nn.init.xavier_uniform(param,gain=nn.init.calculate_gain('sigmoid'))
+/home/steve.azzolin/GraphRNN_fork/model.py:297: UserWarning: nn.init.constant is now deprecated in favor of nn.init.constant_.
+  nn.init.constant(param, 0.25)
+/home/steve.azzolin/GraphRNN_fork/model.py:302: UserWarning: nn.init.xavier_uniform is now deprecated in favor of nn.init.xavier_uniform_.
+  m.weight.data = init.xavier_uniform(m.weight.data, gain=nn.init.calculate_gain('relu'))
+Using comm dataset
+CUDA 1
+File name prefix GraphRNN_RNN_comm_4_128_
+Using given splits
+107.448 158 60
+graph_validate_len 108.22
+graph_test_len 104.26
+total graph num: 500, training set: 300
+max number node: 158
+max/min number edge: 1903; 247
+max previous node: 80
+train and test graphs saved at:  ./graphs/GraphRNN_RNN_comm_4_128_test_0.dat
+Traceback (most recent call last):
+  File "main.py", line 154, in <module>
+    assert False
+AssertionError

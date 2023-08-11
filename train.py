@@ -520,13 +520,25 @@ def train_rnn_epoch(epoch, args, rnn, output, data_loader,
 
 
 
-def test_rnn_epoch(epoch, args, rnn, output, test_batch_size=16):
+def test_rnn_epoch(epoch, args, rnn, output, test_batch_size=16, bigger=0):
     rnn.hidden = rnn.init_hidden(test_batch_size)
     rnn.eval()
     output.eval()
 
     # generate graphs
-    max_num_node = int(args.max_num_node)
+    if "sbm" in args.graph_type:
+        print("Found SBM run with bigger = ", bigger)
+        if bigger == 1:
+            max_num_node = int(args.max_num_node) + np.random.randint(60, 160)
+        elif bigger == 2:
+            max_num_node = int(args.max_num_node) + np.random.randint(90, 240)
+        elif bigger == 4:
+            max_num_node = int(args.max_num_node) + np.random.randint(210, 560)
+        elif bigger == 8:
+            max_num_node = int(args.max_num_node) + np.random.randint(450, 1200)
+    else:
+        assert False #temporary, for debugging added by Steve
+        max_num_node = int(args.max_num_node) + bigger
     y_pred_long = Variable(torch.zeros(test_batch_size, max_num_node, args.max_prev_node)).cuda() # discrete prediction
     x_step = Variable(torch.ones(test_batch_size,1,args.max_prev_node)).cuda()
     for i in range(max_num_node):
@@ -758,3 +770,36 @@ def train_nll(args, dataset_train, dataset_test, rnn, output,graph_validate_len,
             f.write(str(nll_train)+','+str(nll_test)+'\n')
 
     print('NLL evaluation done')
+
+def generate_only(args, rnn, output):
+    # check if load existing model
+    if args.load:
+        fname = args.model_save_path + args.fname + 'lstm_' + str(args.load_epoch) + '.dat'
+        rnn.load_state_dict(torch.load(fname))
+        fname = args.model_save_path + args.fname + 'output_' + str(args.load_epoch) + '.dat'
+        output.load_state_dict(torch.load(fname))
+        print("Loaded models from: ", fname)
+
+        args.lr = 0.00001
+        epoch = args.load_epoch
+        print('model loaded!, lr: {}, epoch: {}'.format(args.lr, epoch))
+    else:
+        assert False
+
+    # test
+    bigger = args.bigger_graphs
+    print("Found bigger = ", bigger)
+    for sample_time in range(1,4):
+        G_pred = []
+        while len(G_pred)<args.test_total_size:
+            if 'GraphRNN_RNN' in args.note:
+                G_pred_step = test_rnn_epoch(epoch, args, rnn, output, test_batch_size=args.test_batch_size, bigger=bigger)
+            else:
+                assert False
+            G_pred.extend(G_pred_step)
+        # save graphs
+        fname = args.graph_save_path + args.fname_pred + str(epoch) +'_'+str(sample_time) + '_' + f"bigger_{bigger}" + '.dat'
+        save_graph_list(G_pred, fname)
+        if 'GraphRNN_RNN' in args.note:
+            break
+    print('test done, graphs saved')

@@ -2,10 +2,10 @@
 #SBATCH -p long-disi
 #SBATCH --gres=gpu:1
 #SBATCH --cpus-per-task=12
-#SBATCH --job-name=graph_rnn
+#SBATCH --job-name=graphrnn
 #SBATCH -t 2-00:00
-#SBATCH --output=/home/steve.azzolin/GraphRNN_fork/sbatch_outputs/ego.txt
-#SBATCH --error=/home/steve.azzolin/GraphRNN_fork/sbatch_outputs/ego.txt
+#SBATCH --output=/home/steve.azzolin/GraphRNN_fork/sbatch_outputs/comm_nopad.txt
+#SBATCH --error=/home/steve.azzolin/GraphRNN_fork/sbatch_outputs/comm_nopad.txt
 #SBATCH --ntasks=1
 #SBATCH -N 1
 #SBATCH --mail-user=steve.azzolin@unitn.it
@@ -20,9 +20,7 @@ eval "$(conda shell.bash hook)"
 conda activate graphrnn
 
 
-DATASET=grid
-BIGGER=200
-python main.py --graph_type ego
+python main.py --graph_type comm
 
 
 echo DONE

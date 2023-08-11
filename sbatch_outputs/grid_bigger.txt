@@ -1,0 +1,81 @@
+Extracting with BIGGER=329
+/home/steve.azzolin/GraphRNN_fork/model.py:299: UserWarning: nn.init.xavier_uniform is now deprecated in favor of nn.init.xavier_uniform_.
+  nn.init.xavier_uniform(param,gain=nn.init.calculate_gain('sigmoid'))
+/home/steve.azzolin/GraphRNN_fork/model.py:297: UserWarning: nn.init.constant is now deprecated in favor of nn.init.constant_.
+  nn.init.constant(param, 0.25)
+/home/steve.azzolin/GraphRNN_fork/model.py:302: UserWarning: nn.init.xavier_uniform is now deprecated in favor of nn.init.xavier_uniform_.
+  m.weight.data = init.xavier_uniform(m.weight.data, gain=nn.init.calculate_gain('relu'))
+/home/steve.azzolin/anaconda3/envs/graphrnn/lib/python3.6/site-packages/torch/nn/functional.py:1806: UserWarning: nn.functional.sigmoid is deprecated. Use torch.sigmoid instead.
+  warnings.warn("nn.functional.sigmoid is deprecated. Use torch.sigmoid instead.")
+Using grid dataset
+CUDA 1
+File name prefix GraphRNN_RNN_grid_4_128_
+Dataset data/grids_10_20.pt saved with 100 graphs
+Using given splits
+210.25 361 100
+graph_validate_len 202.25
+graph_test_len 212.65
+total graph num: 100, training set: 60
+max number node: 361
+max/min number edge: 684; 180
+max previous node: 40
+train and test graphs saved at:  ./graphs/GraphRNN_RNN_grid_4_128_test_0.dat
+Loaded models from:  ./model_save/GraphRNN_RNN_grid_4_128_output_1300.dat
+model loaded!, lr: 1e-05, epoch: 1300
+Found bigger =  329
+test done, graphs saved
+Extracting with BIGGER=825
+/home/steve.azzolin/GraphRNN_fork/model.py:299: UserWarning: nn.init.xavier_uniform is now deprecated in favor of nn.init.xavier_uniform_.
+  nn.init.xavier_uniform(param,gain=nn.init.calculate_gain('sigmoid'))
+/home/steve.azzolin/GraphRNN_fork/model.py:297: UserWarning: nn.init.constant is now deprecated in favor of nn.init.constant_.
+  nn.init.constant(param, 0.25)
+/home/steve.azzolin/GraphRNN_fork/model.py:302: UserWarning: nn.init.xavier_uniform is now deprecated in favor of nn.init.xavier_uniform_.
+  m.weight.data = init.xavier_uniform(m.weight.data, gain=nn.init.calculate_gain('relu'))
+/home/steve.azzolin/anaconda3/envs/graphrnn/lib/python3.6/site-packages/torch/nn/functional.py:1806: UserWarning: nn.functional.sigmoid is deprecated. Use torch.sigmoid instead.
+  warnings.warn("nn.functional.sigmoid is deprecated. Use torch.sigmoid instead.")
+Using grid dataset
+CUDA 1
+File name prefix GraphRNN_RNN_grid_4_128_
+Dataset data/grids_10_20.pt saved with 100 graphs
+Using given splits
+210.25 361 100
+graph_validate_len 202.25
+graph_test_len 212.65
+total graph num: 100, training set: 60
+max number node: 361
+max/min number edge: 684; 180
+max previous node: 40
+train and test graphs saved at:  ./graphs/GraphRNN_RNN_grid_4_128_test_0.dat
+Loaded models from:  ./model_save/GraphRNN_RNN_grid_4_128_output_1300.dat
+model loaded!, lr: 1e-05, epoch: 1300
+Found bigger =  825
+test done, graphs saved
+Extracting with BIGGER=3825
+/home/steve.azzolin/GraphRNN_fork/model.py:299: UserWarning: nn.init.xavier_uniform is now deprecated in favor of nn.init.xavier_uniform_.
+  nn.init.xavier_uniform(param,gain=nn.init.calculate_gain('sigmoid'))
+/home/steve.azzolin/GraphRNN_fork/model.py:297: UserWarning: nn.init.constant is now deprecated in favor of nn.init.constant_.
+  nn.init.constant(param, 0.25)
+/home/steve.azzolin/GraphRNN_fork/model.py:302: UserWarning: nn.init.xavier_uniform is now deprecated in favor of nn.init.xavier_uniform_.
+  m.weight.data = init.xavier_uniform(m.weight.data, gain=nn.init.calculate_gain('relu'))
+/home/steve.azzolin/anaconda3/envs/graphrnn/lib/python3.6/site-packages/torch/nn/functional.py:1806: UserWarning: nn.functional.sigmoid is deprecated. Use torch.sigmoid instead.
+  warnings.warn("nn.functional.sigmoid is deprecated. Use torch.sigmoid instead.")
+Using grid dataset
+CUDA 1
+File name prefix GraphRNN_RNN_grid_4_128_
+Dataset data/grids_10_20.pt saved with 100 graphs
+Using given splits
+210.25 361 100
+graph_validate_len 202.25
+graph_test_len 212.65
+total graph num: 100, training set: 60
+max number node: 361
+max/min number edge: 684; 180
+max previous node: 40
+train and test graphs saved at:  ./graphs/GraphRNN_RNN_grid_4_128_test_0.dat
+Loaded models from:  ./model_save/GraphRNN_RNN_grid_4_128_output_1300.dat
+model loaded!, lr: 1e-05, epoch: 1300
+Found bigger =  3825
+test done, graphs saved
+/opt/xcat/bin:/opt/xcat/sbin:/opt/xcat/share/xcat/tools:/home/steve.azzolin/.vscode-server/bin/6445d93c81ebe42c4cbd7a60712e0b17d9463e97/bin/remote-cli:/opt/xcat/bin:/opt/xcat/sbin:/opt/xcat/share/xcat/tools:/home/steve.azzolin/anaconda3/envs/graphrnn/bin:/home/steve.azzolin/anaconda3/condabin:/home/steve.azzolin/.local/bin:/home/steve.azzolin/bin:/opt/xcat/bin:/opt/xcat/sbin:/opt/xcat/share/xcat/tools:/usr/share/Modules/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin
+DONE
+Execution lasted 57 minutes
